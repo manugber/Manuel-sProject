@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="Manuel_sProject" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="CE1-vG-7Lz" id="2Ob-HF-px5"/>
+                <outlet property="tabBar" destination="Y3I-iO-v1N" id="8pk-h6-Z4R"/>
+                <outlet property="table" destination="2UB-aq-qNO" id="fTa-nd-EYQ"/>
+                <outlet property="view" destination="oxZ-G8-pWQ" id="1sZ-jk-W28"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="oxZ-G8-pWQ">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tabBar contentMode="scaleToFill" translucent="NO" id="Y3I-iO-v1N">
+                    <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <items>
+                        <tabBarItem title="Cartelera" image="film" catalog="system" id="539-Tq-Hnd"/>
+                        <tabBarItem title="Favoritos" image="heart.fill" catalog="system" id="PNx-YT-Eds"/>
+                    </items>
+                </tabBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2UB-aq-qNO">
+                    <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Buscar un elemento" id="CE1-vG-7Lz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </searchBar>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="mhQ-un-Pgl"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="2UB-aq-qNO" firstAttribute="top" secondItem="mhQ-un-Pgl" secondAttribute="top" id="DI3-1O-9sI"/>
+                <constraint firstItem="2UB-aq-qNO" firstAttribute="leading" secondItem="mhQ-un-Pgl" secondAttribute="leading" id="Fdp-Uk-KgD"/>
+                <constraint firstItem="Y3I-iO-v1N" firstAttribute="top" secondItem="2UB-aq-qNO" secondAttribute="bottom" id="gC7-Us-nec"/>
+                <constraint firstItem="2UB-aq-qNO" firstAttribute="trailing" secondItem="mhQ-un-Pgl" secondAttribute="trailing" id="ocn-qd-v9m"/>
+            </constraints>
+            <point key="canvasLocation" x="-1313.0434782608697" y="104.46428571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="film" catalog="system" width="128" height="93"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

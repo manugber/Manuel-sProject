@@ -1,0 +1,386 @@
+[
+    {
+        "title": "El Padrino",
+        "genre": "Drama",
+        "director": "Francis Ford Coppola",
+        "mainActor": "Al Pacino",
+        "description": "Don Vito Corleone es el jefe de una de las cinco familias que ejercen el mando de la Cosa Nostra en Nueva York en los años 40. Don Corleone tiene cuatro hijos; una chica, Connie, y tres varones, Santino, o Sonny, como le gusta que le llamen, Michael y Freddie, al que envían exiliado a Las Vegas, dada su incapacidad para asumir puestos de mando en la ”Familia”. Cuando otro capo, Sollozzo, al rechazar el Padrino intervenir en el negocio de estupefacientes, intenta asesinar a éste, empieza una cruenta lucha de violentos episodios entre los distintos grupos.",
+        "image": ""
+    },
+    {
+        "title": "El Bueno, El Feo Y El Malo",
+        "genre": "Suspense",
+        "director": "Sergio Leone",
+        "mainActor": "Clint Eastwood",
+        "description": "Tres hombres violentos pelean por una caja que alberga 200 000 dólares, la cual fue escondida durante la Guerra Civil. Dado que ninguno puede encontrar la tumba donde está el botín sin la ayuda de los otros dos, deben colaborar, pese a odiarse.",
+        "image": ""
+    },
+    {
+        "title": "Iron Man",
+        "genre": "Superhéroes",
+        "director": "Jon Favreau",
+        "mainActor": "Robert Downey Jr.",
+        "description": "Un multimillonario industrial y genio inventor es secuestrado y obligado a construir un arma devastadora. En su lugar, utilizando su inteligencia e ingenio, Tony construye una armadura de alta tecnología y escapa de su cautiverio.",
+        "image": ""
+    },
+    {
+        "title": "Iron Man II",
+        "genre": "Superhéroes",
+        "director": "Jon Favreau",
+        "mainActor": "Robert Downey Jr.",
+        "description": "Ahora que el mundo es consciente de que él es Iron Man, el inventor multimillonario Anthony Stark enfrenta la presión en todos lados para compartir su tecnología con los militares. Él se resiste a divulgar los secretos de su traje blindado, temiendo que la información caiga en las manos equivocadas.",
+        "image": ""
+    },
+    {
+        "title": "Iron Man III",
+        "genre": "Superhéroes",
+        "director": "Shane Black",
+        "mainActor": "Robert Downey Jr.",
+        "description": "Anthony Stark se enfrenta a un enemigo cuyo poder no conoce límites. Cuando Stark comprende que su enemigo ha destruido su universo personal, se embarca en una angustiosa búsqueda para encontrar a los responsables. Este viaje pondrá a prueba su entereza una y otra vez.",
+        "image": ""
+    },
+    {
+        "title": "Capitán América: El Primer Vengador",
+        "genre": "Superhéroes",
+        "director": "Joe Johnston",
+        "mainActor": "Chris Evans",
+        "description": "Tras tres meses de someterse a un programa de entrenamiento físico y táctico, Steve Rogers es encomendado su primera misión como Capitán América. Armado con un escudo indestructible, emprenderá la guerra contra el Mal como líder de los Vengadores.",
+        "image": ""
+    },
+    {
+        "title": "Capitán América: El Soldado De Invierno",
+        "genre": "Superhéroes",
+        "director": "Anthony Russo",
+        "mainActor": "Chris Evans",
+        "description": "Tras los devastadores acontecimientos vividos en Nueva York, el superhéroe vive tranquilamente en Washington D.C., intentando adaptarse al mundo moderno. Sin embargo, cuando un colega de es amenazado, Rogers se ve envuelto en una trama de intrigas.",
+        "image": ""
+    },
+    {
+        "title": "Capitán América: Civil War",
+        "genre": "Superhéroes",
+        "director": "Hermanos Russo",
+        "mainActor": "Chris Evans",
+        "description": "Mientras intentan detener a Rumlow en Lagos, Capitán América, Falcon, Viuda Negra y Bruja Escarlata se ven obligados a realizar una intervención para evitar el robo de una muestra letal en el Instituto de Enfermedades Infecciosas.",
+        "image": ""
+    },
+    {
+        "title": "Los Vengadores",
+        "genre": "Superhéroes",
+        "director": "Joss Whedon",
+        "mainActor": "Robert Downey Jr.",
+        "description": "El director de la Agencia SHIELD decide reclutar a un equipo para salvar al mundo de un desastre casi seguro cuando un enemigo inesperado surge como una gran amenaza para la seguridad mundial.",
+        "image": ""
+    },
+    {
+        "title": "Los Vengadores: La Era De Ultrón",
+        "genre": "Superhéroes",
+        "director": "Joss Whedon",
+        "mainActor": "Robert Downey Jr.",
+        "description": "Tony Stark quiere lanzar un nuevo programa de paz, pero algo sale mal y acaba creando a Ultrón, un robot que quiere destruir a la humanidad. Thor, Hulk y el resto de los Vengadores deberán juntar sus fuerzas una vez más para luchar contra el robot.",
+        "image": ""
+    },
+    {
+        "title": "Los Vengadores: Infinity War",
+        "genre": "Superhéroes",
+        "director": "Hermanos Russo",
+        "mainActor": "Robert Downey Jr.",
+        "description": "Los superhéroes se alían para vencer al poderoso Thanos, el peor enemigo al que se han enfrentado. Si Thanos logra reunir las seis gemas del infinito: poder, tiempo, alma, realidad, mente y espacio, nadie podrá detenerlo.",
+        "image": ""
+    },
+    {
+        "title": "Los Vengadores: Endgame",
+        "genre": "Superhéroes",
+        "director": "Hermanos Russo",
+        "mainActor": "Robert Downey Jr.",
+        "description": "Después de los eventos devastadores de Los Vengadores: Infinity War, el universo está en ruinas debido a las acciones de Thanos, el Titán Loco. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar detenerlo y restaurar el orden en el universo de una vez por todas.",
+        "image": ""
+    },
+    {
+        "title": "Black Panther",
+        "genre": "Superhéroes",
+        "director": "Ryan Coogler",
+        "mainActor": "Chadwick Boseman",
+        "description": "Hace millones de años, un meteorito de poderoso vibranium impactó en África. Cuando llegó la era del hombre, la mayoría de los habitantes de aquel territorio se unieron bajo el mando de un guerrero, Black Panther.",
+        "image": ""
+    },
+    {
+        "title": "Harry Potter Y La Piedra Filosofal",
+        "genre": "Ciencia Ficción",
+        "director": "Chris Columbus",
+        "mainActor": "Daniel Radcliffe",
+        "description": "Cuando Harry Potter cumple 11 años se entera que es huérfano, hijo de dos magos y que posee poderes mágicos. En la Escuela de Magia y Brujería de Hogwarts aprende a jugar el deporte de alturas, Quidditch y juega un emocionante juego de ajedrez, en vías a encarar al Mago Oscuro que está empeñado en destruirlo.",
+        "image": ""
+    },
+    {
+        "title": "Harry Potter Y La Cámara Secreta",
+        "genre": "Ciencia Ficción",
+        "director": "Chris Columbus",
+        "mainActor": "Daniel Radcliffe",
+        "description": "El joven mago Harry Potter, Ron Weasley y Hermione Granger se enfrentan a nuevos retos. Durante su segundo año en el Colegio Hogwarts de Magia y Hechicería, estos jovencitos intentan descubrir una fuerza oscura que esta aterrorizando al Colegio. Después de un largo verano, Harry Potter vuelve a la escuela donde de pronto empezará a preocuparse por la supervivencia, cuando cosas terribles comienzan a pasarle a él y a sus compañeros. Misteriosamente, palabras escritas sobre la pared brillan advirtiendo que la cámara secreta ha sido abierta.",
+        "image": ""
+    },
+    {
+        "title": "Harry Potter Y El Prisionero De Azkaban",
+        "genre": "Ciencia Ficción",
+        "director": "Alfonso Cuarón",
+        "mainActor": "Daniel Radcliffe",
+        "description": "En su tercer año en Hogwarts, Harry, Ron y Hermione conocen a Sirius Black, el prisionero que ha escapado de Azkaban y aprenden a acercarse a un Hippogriffo mitad caballo/ mitad águila, a como transformar a los cambiantes Boggarts y el arte de la Adivinación. Harry deberá enfrentárse a los Dementores que son ladrones de almas, defenderse del peligroso hombre lobo y lidiar con la verdad acerca de la relación entre Sirius Black y sus padres.",
+        "image": ""
+    },
+    {
+        "title": "Harry Potter Y El Cáliz De Fuego",
+        "genre": "Ciencia Ficción",
+        "director": "Mike Newell",
+        "mainActor": "Daniel Radcliffe",
+        "description": "Cuando el nombre de Harry Potter emerge del Cáliz de Fuego, se convierte en un competidor en una batalla agotadora por la gloria entre tres colegios de magos: El Torneo de los Tres Magos. Pero ya que Harry nunca presentó su nombre para El Torneo, ¿quién lo hizo? Ahora Harry debe enfrentar a un dragón infalible, demonios acuáticos feroces y un laberinto encantado, solamente para encontrarse con el cruel descubrimiento de El Quien No Debe Ser Nombrado.",
+        "image": ""
+    },
+    {
+        "title": "Harry Potter Y La Orden Del Fénix",
+        "genre": "Ciencia Ficción",
+        "director": "David Yates",
+        "mainActor": "Daniel Radcliffe",
+        "description": "Harry Potter regresa por quinto año a Hogwarts aún sacudido por la tragedia ocurrida en el Torneo de los Tres Magos. Debido a que el Ministro de la Magia niega el regreso de Lord Voldemort, Harry se convierte en el centro de atención de la comunidad mágica. Mientras lucha con sus problemas en el colegio, incluyendo a la nueva profesora Dolores Umbridge, intentará aprender más sobre la misteriosa Orden del Fénix.",
+        "image": ""
+    },
+    {
+        "title": "Harry Potter Y El Misterio Del Príncipe",
+        "genre": "Ciencia Ficción",
+        "director": "David Yates",
+        "mainActor": "Daniel Radcliffe",
+        "description": "Harry, que comienza su sexto año en la escuela de magia de Hogwarts, descubre un misterioso libro propiedad de El Príncipe Mestizo con el cual aprende nuevos trucos. Voldemort va tomando control tanto del mundo Muggle como del mundo de la magia, y Hogwarts ya no es el lugar seguro que solía ser. Harry sospecha que tal vez hasta el castillo sea peligroso. Dumbledore sabe que la batalla final se aproxima rápidamente, y por eso se preocupa mucho más por preparar a Harry para ello.",
+        "image": ""
+    },
+    {
+        "title": "Harry Potter Y Las Reliquias De La Muerte Parte 1",
+        "genre": "Ciencia Ficción",
+        "director": "David Yates",
+        "mainActor": "Daniel Radcliffe",
+        "description": "Harry, Ron y Hermione se van a una peligrosa misión para localizar y destruir el secreto de la inmortalidad y destrucción de Voldemort - los Horrocruces. Solos, sin la guía de sus profesores o la protección del Profesor Dumbledore, los tres amigos deben apoyarse el uno en el otro más que nunca. Pero hay Fuerzas Oscuras en medio que amenazan con separarlos. Harry Potter se está acercando cada vez más a la tarea para la que se ha preparado desde el primer día que pisó Hogwarts: la última batalla con Voldemort.",
+        "image": ""
+    },
+    {
+        "title": "Harry Potter Y Las Reliquias De La Muerte Parte 2",
+        "genre": "Ciencia Ficción",
+        "director": "David Yates",
+        "mainActor": "Daniel Radcliffe",
+        "description": "En la Parte 2 del épico final, la batalla entre las fuerzas del bien y las del mal en el mundo mágico termina en una guerra suprema. Las apuestas están al máximo y nadie está a salvo. Pero es Harry Potter quien debe ser llamado para hacer el último sacrificio, mientras se acerca al enfrentamiento con Lord Voldemort. Todo termina aquí.",
+        "image": ""
+    },
+    {
+        "title": "Cantando Bajo La LLuvia",
+        "genre": "Musical",
+        "director": "Gene Kelly",
+        "mainActor": "Gene Kelly",
+        "description": "Antes de conocer a la aspirante a actriz Kathy Selden, el ídolo del cine mudo Don Lockwood pensaba que lo tenía todo: fama, fortuna y éxito. Pero, cuando la conoce, se da cuenta de que ella es lo que realmente faltaba en su vida. Con el nacimiento del cine sonoro, Don quiere filmar musicales con Kathy, pero entre ambos se interpone la reina del cine mudo Lina Lamont.",
+        "image": ""
+    },
+    {
+        "title": "Grease",
+        "genre": "Musical",
+        "director": "Randal Kleiser",
+        "mainActor": "John Travolta",
+        "description": "El rebelde Danny Zuko y la inocente australiana Sandy mantienen un romance durante las vacaciones de verano, creyendo que no se volverán a ver. Sin embargo, para la sorpresa de ambos, acaban estudiando juntos en el mismo instituto durante el nuevo curso.",
+        "image": ""
+    },
+    {
+        "title": "Mamma Mia!",
+        "genre": "Musical",
+        "director": "Phyllida Lloyd",
+        "mainActor": "Meryl Streep",
+        "description": "Una joven que ha crecido en una pequeña isla griega, ha sido educada por una madre rebelde y poco convencional, que siempre se ha negado a revelarle la identidad de su padre.",
+        "image": ""
+    },
+    {
+        "title": "Top Gun",
+        "genre": "Acción",
+        "director": "Tony Scott",
+        "mainActor": "Tom Cruise",
+        "description": "El joven piloto Maverick Mitchell acude a una prestigiosa escuela aérea, famosa por formar a los mejores pilotos de combate del país. Maverick se siente atraído por su hermosa instructora, mientras desarrolla una intensa rivalidad con otro piloto.",
+        "image": ""
+    },
+    {
+        "title": "Pulp Fiction",
+        "genre": "Drama",
+        "director": "Quentin Tarantino",
+        "mainActor": "John Travolta",
+        "description": "La vida de un boxeador, dos sicarios, la esposa de un gánster y dos bandidos se entrelaza en una historia de violencia y redención.",
+        "image": ""
+    },
+    {
+        "title": "Forrest Gump",
+        "genre": "Drama",
+        "director": "Robert Zemeckis",
+        "mainActor": "Tom Hanks",
+        "description": "Sentado en un banco en Savannah, Georgia, Forrest Gump espera al autobús. Mientras éste tarda en llegar, el joven cuenta su vida a las personas que se sientan a esperar con él. Aunque sufre un pequeño retraso mental, esto no le impide hacer cosas maravillosas.",
+        "image": ""
+    },
+    {
+        "title": "Titanic",
+        "genre": "Drama",
+        "director": "James Cameron",
+        "mainActor": "Leonardo DiCaprio",
+        "description": "Jack es un joven artista que gana un pasaje para viajar a América en el Titanic, el transatlántico más grande y seguro jamás construido.",
+        "image": ""
+    },
+    {
+        "title": "Regreso Al Futuro",
+        "genre": "Ciencia Ficción",
+        "director": "Robert Zemeckis",
+        "mainActor": "Michael J. Fox",
+        "description": "El adolescente Marty McFly es amigo de Doc, un científico que ha construido una máquina del tiempo. Cuando los dos prueban el artefacto, un error fortuito hace que Marty llegue a 1955, año en el que sus padres iban al instituto y todavía no se habían conocido.",
+        "image": ""
+    },
+    {
+        "title": "La Vida Es Bella",
+        "genre": "Drama",
+        "director": "Roberto Benigni",
+        "mainActor": "Roberto Benigni",
+        "description": "En 1939, a punto de estallar la Segunda Guerra Mundial, Guido llega a Arezzo con la intención de abrir una librería. Allí conoce a Dora y, a pesar de que está prometida con el fascista Rodolfo, acaba casándose con ella y tienen un hijo.",
+        "image": ""
+    },
+    {
+        "title": "La Lista De Schindler",
+        "genre": "Drama",
+        "director": "Steven Spielberg",
+        "mainActor": "Liam Neeson",
+        "description": "El empresario alemán Oskar Schindler, miembro del Partido Nazi, pone en marcha un elaborado, costoso y arriesgado plan para salvar a más de mil judíos del Holocausto.",
+        "image": ""
+    },
+    {
+        "title": "El Padrino II",
+        "genre": "Drama",
+        "director": "Francis Ford Coppola",
+        "mainActor": "Al Pacino",
+        "description": "Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares. El nuevo cabeza de familia debe lidiar con un panorama cambiante de amistades y enemistades, al tener que negociar con la mafia judía y perder el apoyo de Frankie.",
+        "image": ""
+    },
+    {
+        "title": "Matrix",
+        "genre": "Ciencia Ficción",
+        "director": "Lilly Wachowski",
+        "mainActor": "Keanu Reeves",
+        "description": "El programador informático Thomas Anderson, más conocido en el mundo de los hackers como Neo, está en el punto de mira del temible agente Smith. Otros dos piratas informáticos, Trinity y Morfeo, se ponen en contacto con Neo para ayudarlo a escapar. Matrix te posee. Sigue al conejo blanco.",
+        "image": ""
+    },
+    {
+        "title": "Kill Bill",
+        "genre": "Acción",
+        "director": "Quentin Tarantino",
+        "mainActor": "Uma Thurman",
+        "description": "Mamba Negra es una asesina que, el día de su boda, es atacada por los miembros de la banda de su jefe, Bill. Sin embargo consigue sobrevivir, aunque queda en coma. Cinco años después despierta, con un deseo de venganza.",
+        "image": ""
+    },
+    {
+        "title": "Gran Torino",
+        "genre": "Drama",
+        "director": "Clint Eastwood",
+        "mainActor": "Clint Eastwood",
+        "description": "Walt Kowalski, un veterano de la guerra de Corea, es un obrero jubilado del sector del automóvil que ha enviudado recientemente. Su máxima pasión es cuidar de su más preciado tesoro: un coche Gran Torino de 1972.",
+        "image": ""
+    },
+    {
+        "title": "Million Dollar Baby",
+        "genre": "Drama",
+        "director": "Clint Eastwood",
+        "mainActor": "Clint Eastwood",
+        "description": "Frankie Dunn es un entrenador que, a pesar de no entrenar a chicas, hace una excepción con Maggie Fitzgerald. Maggie es un poco mayor para empezar de cero en el deporte profesional, pero está dispuesta a sacrificarse al máximo para triunfar.",
+        "image": ""
+    },
+    {
+        "title": "Malditos Bastardos",
+        "genre": "Acción",
+        "director": "Quentin Tarantino",
+        "mainActor": "Brad Pitt",
+        "description": "Mientras Europa se desangra durante la ocupación nazi de la Segunda Guerra Mundial, un pequeño batallón de vengativos soldados judíos a cargo de Aldo Raine es entrenado para realizar una temeraria hazaña: asesinar a Hitler y a los funcionarios más altos del Tercer Reich alemán.",
+        "image": ""
+    },
+    {
+        "title": "El Precio Del Poder",
+        "genre": "Drama",
+        "director": "Brian De Palma",
+        "mainActor": "Al Pacino",
+        "description": "Tony Montana es un emigrante cubano frío y sanguinario que se instala en Miami con el propósito de convertirse en un gángster importante. Con la colaboración de su amigo Manny Rivera inicia una fulgurante carrera delictiva con el objetivo de acceder a la cúpula de una organización de narcos.",
+        "image": ""
+    },
+    {
+        "title": "Taxi Driver",
+        "genre": "Drama",
+        "director": "Martin Scorsese",
+        "mainActor": "Robert De Niro",
+        "description": "Para sobrellevar el insomnio crónico que sufre desde su regreso de Vietnam, Travis Bickle trabaja como taxista nocturno en Nueva York.",
+        "image": ""
+    },
+    {
+        "title": "Salvar Al Soldado Ryan",
+        "genre": "Drama",
+        "director": "Steven Spielberg",
+        "mainActor": "Tom Hanks",
+        "description": "Después de desembarcar en Normandía, en plena Segunda Guerra Mundial, unos soldados norteamericanos deben arriesgar sus vidas para salvar al soldado James Ryan, cuyos tres hermanos han muerto en la guerra.",
+        "image": ""
+    },
+    {
+        "title": "Infiltrados",
+        "genre": "Drama",
+        "director": "Martin Scorsese",
+        "mainActor": "Leonardo DiCaprio",
+        "description": "El Departamento de Policía de Massachussets se ve envuelto en una guerra campal para derrotar a la mayor banda de crimen organizado de la ciudad. La estrategia es terminar con el reinado del poderoso jefe de la mafia Frank Costello desde dentro. A un joven novato, Billy Costigan, criado en el sur de Boston, se le encarga infiltrarse en la mafia dirigida por Costello.",
+        "image": ""
+    },
+    {
+        "title": "Kill Bill II",
+        "genre": "Acción",
+        "director": "Quentin Tarantino",
+        "mainActor": "Uma Thurman",
+        "description": "Tras eliminar a algunos de los miembros de la banda, Mamba Negra continúa con su venganza. Su principal objetivo es matar a su líder y antiguo jefe Bill, que la dió por muerta dejándola en coma.",
+        "image": ""
+    },
+    {
+        "title": "Shutter Island",
+        "genre": "Drama",
+        "director": "Martin Scorsese",
+        "mainActor": "Leonardo DiCaprio",
+        "description": "Ambientada en 1954, Shutter Island cuenta lo que ocurre cuando dos policías viajan desde Boston hasta una isla donde se encuentra un hospital psiquiátrico, el Ashecliffe, para investigar la misteriosa desaparición de una asesina, Rachel Solando, que ha sido internada allí.",
+        "image": ""
+    },
+    {
+        "title": "Avatar",
+        "genre": "Ciencia Ficción",
+        "director": "James Cameron",
+        "mainActor": "Sam Worthington",
+        "description": "Jake Sully y Ney'tiri han formado una familia y hacen todo lo posible por permanecer juntos. Sin embargo, deben abandonar su hogar y explorar las regiones de Pandora cuando una antigua amenaza reaparece.",
+        "image": ""
+    },
+    {
+        "title": "Casino",
+        "genre": "Drama",
+        "director": "Martin Scorsese",
+        "mainActor": "Robert De Niro",
+        "description": "En las Vegas, en 1973, Sam Rothstein, es un profesional de las apuestas y director de un importante casino que pertenece a unos mafiosos. Un día, el violento Nicky Santoro, llega a las Vegas con unas crueles intenciones.",
+        "image": ""
+    },
+    {
+        "title": "El Irlandés",
+        "genre": "Drama",
+        "director": "Martin Scorsese",
+        "mainActor": "Robert De Niro",
+        "description": "Frank Sheeran, veterano de la Segunda Guerra Mundial, estafador y asesino a sueldo recuerda su participación en el asesinato de Jimmy Hoffa. Uno de los grandes misterios sin resolver del país: la desaparición del legendario sindicalista Jimmy Hoffa. Un gran viaje por los turbios entresijos del crimen organizado: sus mecanismos internos, rivalidades y su conexión con la política.",
+        "image": ""
+    },
+    {
+        "title": "Ronin",
+        "genre": "Acción",
+        "director": "John Frankenheimer",
+        "mainActor": "Robert De Niro",
+        "description": "Un equipo de agentes especiales internacionales debe llevar a cabo una misión misteriosa: robar un maletín fuertemente custodiado buscado tanto por el IRA como por la mafia rusa.",
+        "image": ""
+    },
+    {
+        "title": "",
+        "genre": "",
+        "director": "",
+        "mainActor": "",
+        "description": "",
+        "image": ""
+    }
+]
