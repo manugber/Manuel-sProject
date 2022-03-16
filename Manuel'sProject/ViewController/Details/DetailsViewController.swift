@@ -17,8 +17,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     let cellTypeVId = "cellTypeV"
     var film: Film
     var billboard: [Film]
+    var genres: [Genre]
     var relatedByDirector = [Film]()
     var relatedByActor = [Film]()
+    var credits = Credits(id: 0, cast: [Cast(id: 1, name: "", profile_path: "")], crew: [Crew(id: 1, name: "", job: "Director")])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +41,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         table.register(nibCellTypeV, forCellReuseIdentifier: cellTypeVId)
     }
     
-    init(film: Film, billboard: [Film]) {
+    init(film: Film, billboard: [Film], genres: [Genre]) {
         self.film = film
         self.billboard = billboard
+        self.genres = genres
         super.init(nibName: "DetailsViewController", bundle: nil)
-        relatedFilms(director: film.director, mainActor: film.mainActor)
+        print("entro")
+        loadCredits()
+        print("salgo")
+//        relatedFilms(director: film.director, mainActor: film.mainActor)
     }
     
     required init?(coder: NSCoder) {
@@ -73,23 +79,23 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cellType
         case 2:
             let cellType = cell as! CellTypeII
-            cellType.cellLabel.text = film.genre
+            cellType.cellLabel.text = getGenres(ids: film.genre_ids)
             cellType.cellLabel.textColor = .lightGray
             return cellType
             
         case 3:
             let cellType = cell as! CellTypeII
-            cellType.cellLabel.text = film.description
+            cellType.cellLabel.text = film.overview
             return cellType
         case 4:
             let cellType = cell as! CellTypeIV
             cellType.indicatorLabel.text = "Director:"
-            cellType.personLabel.text = film.director
+            cellType.personLabel.text = findDirector()
             return cellType
         case 5:
             let cellType = cell as! CellTypeIV
             cellType.indicatorLabel.text = "Actor principal:"
-            cellType.personLabel.text = film.mainActor
+            cellType.personLabel.text = credits.cast[0].name
             return cellType
         case 6:
             let cellType = cell as! CellTypeV
@@ -97,6 +103,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             cellType.film = film
             cellType.billboard = billboard
             cellType.controller = self
+            cellType.genres = genres
             if relatedByDirector.count != 0 {
                 cellType.relatedFilms = relatedByDirector
                 cellType.director = true
@@ -111,12 +118,14 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             cellType.film = film
             cellType.billboard = billboard
             cellType.controller = self
+            cellType.genres = genres
             cellType.relatedFilms = relatedByActor
             cellType.director = false
             return cellType
         default:
             let cellType = cell as! CellTypeIII
-            cellType.cellImage.image = UIImage(named: film.image)
+            let data = try? Data(contentsOf: URL(string: "https://image.tmdb.org/t/p/original\(film.poster_path)")!)
+            cellType.cellImage.image = UIImage(data: data!)
             return cellType
         }
     }
@@ -147,7 +156,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func pushView(view: DetailsViewController) {
-        print("aquí tambien")
         navigationController?.pushViewController(view, animated: true)
     }
     
@@ -164,13 +172,53 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    private func findDirector() -> String {
+        print(credits.cast.count) //printea uno porque aún no se han cargado los datos del json
+        let filtered = credits.crew.filter { i in
+            i.job == "Director"
+        }
+        return filtered[0].name
+    }
+    
+    private func getGenres(ids: [Int]) -> String {
+        var result = ""
+        for id in ids {
+            let genreFiltered = genres.filter({ i in
+                i.id == id
+            })
+            result += "\(genreFiltered[0].name), "
+        }
+        
+        return String(result.dropLast(2))
+    }
+
+    
+    private func loadCredits() {
+        let url = "https://api.themoviedb.org/3/movie/\(film.id)/credits?api_key=0aa458f7c8179e3b827ce1a10e9e6482&language=es-ES"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            do {
+                let decoder = JSONDecoder()
+                let json = try decoder.decode(Credits.self, from: data!)
+                self.credits = json
+            } catch {
+                print("error1")
+            }
+        }).resume()
+    }
+    
     private func relatedFilms(director: String, mainActor: String) {
-        relatedByDirector = billboard.filter({ i in
-            film != i && i.director == film.director
-        })
-        relatedByActor = billboard.filter({i in
-            film != i && i.mainActor == film.mainActor
-        })
+//        relatedByDirector = billboard.filter({ i in
+//            film != i && i.director == film.director
+//        })
+//        relatedByActor = billboard.filter({i in
+//            film != i && i.mainActor == film.mainActor
+//        })
     }
 
 }

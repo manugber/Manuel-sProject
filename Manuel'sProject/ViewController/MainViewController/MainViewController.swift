@@ -14,8 +14,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var page = 1
     var billboard: [Film] = []
     var filtered: [Film] = []
+    var genres: [Genre] = []
+    var images: [UIImage] = []
     var onlyFavs = false
     var searchActive = false
     var alphabetic = true
@@ -29,11 +32,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         setDelegatesAndDataSources()
         setNavigationBar()
         let nibCellTypeI = UINib(nibName: "CellTypeI", bundle: nil)
-        table.register(nibCellTypeI, forCellReuseIdentifier: cellTypeIId)
+        self.table.register(nibCellTypeI, forCellReuseIdentifier: self.cellTypeIId)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadGenres()
+        loadData()
+        table.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -136,12 +145,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         cell.filmTitle.text = item.title
-        cell.filmGenre.text = item.genre
-        cell.filmImage.image = UIImage(named: item.image)
-        
-        let image = item.isFavourite ? "heart.fill" : "heart"
-        cell.favouriteButton.setImage(UIImage(systemName: image), for: .normal)
-        cell.favouriteButton.tintColor = .systemYellow
+        cell.filmGenre.text = getMainGenre(genreId: item.genre_ids[0])
+        cell.filmImage.image = images[indexPath.item]
+//
+//        let image = item.isFavourite ? "heart.fill" : "heart"
+//        cell.favouriteButton.setImage(UIImage(systemName: image), for: .normal)
+//        cell.favouriteButton.tintColor = .systemYellow
         
         UIView.animate(withDuration: 0.75) { // no está funcionando
             //UIView.transition(with: cell.favouriteButton.imageView!, duration: 0.75, options: .transitionCrossDissolve, animations: { cell.favouriteButton.imageView?.image = UIImage(systemName: image) }, completion: nil)
@@ -153,14 +162,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if onlyFavs {
-            let instance = DetailsViewController(film: showFavs()[indexPath.item], billboard: billboard)
+            let instance = DetailsViewController(film: showFavs()[indexPath.item], billboard: billboard, genres: genres)
             navigationController?.pushViewController(instance, animated: true)
         } else {
             if searchActive {
-                let instance = DetailsViewController(film: filtered[indexPath.item], billboard: billboard)
+                let instance = DetailsViewController(film: filtered[indexPath.item], billboard: billboard, genres: genres)
                 navigationController?.pushViewController(instance, animated: true)
             } else {
-                let instance = DetailsViewController(film: billboard[indexPath.item], billboard: billboard)
+                let instance = DetailsViewController(film: billboard[indexPath.item], billboard: billboard, genres: genres)
                 navigationController?.pushViewController(instance, animated: true)
             }
         }
@@ -211,16 +220,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if onlyFavs {
             let element = showFavs()[index]
             let indexOfElement = billboard.firstIndex(of: element)
-            billboard[indexOfElement!].isFavourite = false
+//            billboard[indexOfElement!].isFavourite = false
             table.reloadData()
         } else {
             if searchActive {
                 let indexOfElement = billboard.firstIndex(of: filtered[index])
-                billboard[indexOfElement!].isFavourite = billboard[indexOfElement!].isFavourite ? false : true
+//                billboard[indexOfElement!].isFavourite = billboard[indexOfElement!].isFavourite ? false : true
                 searchBar(searchBar, textDidChange: searchBar.text!)
                 //table.reloadRows(at: [table.indexPath(for: cell)!], with: .none)
             } else {
-                billboard[index].isFavourite = billboard[index].isFavourite ? false : true
+//                billboard[index].isFavourite = billboard[index].isFavourite ? false : true
                 //table.reloadRows(at: [table.indexPath(for: cell)!], with: .none)
             }
             table.reloadData()
@@ -240,39 +249,42 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func showFavs() -> [Film] {
-        if searchActive {
-            return filtered.filter({i in
-                i.isFavourite
-            })
-        } else {
-            return billboard.filter({i in
-                i.isFavourite
-            })
-        }
+//        if searchActive {
+//            return filtered.filter({i in
+//                i.isFavourite
+//            })
+//        } else {
+//            return billboard.filter({i in
+//                i.isFavourite
+//            })
+//        }
+        return [Film]()
     }
     
     private func showFavsAndGenre(genre: String) -> [Film] {
-        if searchActive {
-            return filtered.filter({i in
-                i.isFavourite && i.genre == genre
-            })
-        } else {
-            return billboard.filter({i in
-                i.isFavourite && i.genre == genre
-            })
-        }
+//        if searchActive {
+//            return filtered.filter({i in
+//                i.isFavourite && i.genre == genre
+//            })
+//        } else {
+//            return billboard.filter({i in
+//                i.isFavourite && i.genre == genre
+//            })
+//        }
+        return [Film]()
     }
     
     private func showGenre(genre: String) -> [Film] {
-        if searchActive {
-            return filtered.filter({i in
-                i.genre == genre
-            })
-        } else {
-            return billboard.filter({i in
-                i.genre == genre
-            })
-        }
+//        if searchActive {
+//            return filtered.filter({i in
+//                i.genre == genre
+//            })
+//        } else {
+//            return billboard.filter({i in
+//                i.genre == genre
+//            })
+//        }
+        return [Film]()
     }
     
     private func calculateIndex(indexPath: IndexPath) -> Int {
@@ -296,14 +308,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    private func loadData() {
-        guard let source = Bundle.main.url(forResource: "dataset", withExtension: "json") else { fatalError("error") }
-        guard let data = try? Data(contentsOf: source) else { fatalError("error") }
-        let decoder = JSONDecoder()
-        guard let cartelera = try? decoder.decode([Film].self, from: data) else { fatalError("error") }
-        billboard = cartelera.sorted(by: {$0.title < $1.title})
-    }
-    
     private func setDelegatesAndDataSources() {
         table.delegate = self
         table.dataSource = self
@@ -314,25 +318,102 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func setNavigationBar() {
         self.title = "Cartelera"
         //navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Género", style: .plain, target: self, action: #selector(self.pressedButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .plain, target: self, action: #selector(self.pressedRightButton))
     }
     
-    @objc private func pressedButton() {
-        if alphabetic {
-            navigationController?.navigationBar.topItem?.rightBarButtonItem?.title = "Título"
-            alphabetic = false
-            billboard = billboard.sorted(by: {$0.genre < $1.genre})
-            table.reloadData()
-        } else {
-            navigationController?.navigationBar.topItem?.rightBarButtonItem?.title = "Género"
-            alphabetic = true
-            billboard = billboard.sorted(by: {$0.title < $1.title})
-            table.reloadData()
+    private func getMainGenre(genreId: Int) -> String {
+        let filteredGenre = genres.filter({ i in
+            i.id == genreId
+        })
+        return filteredGenre[0].name
+    }
+    
+    private func loadImages() {
+        print("entro primero")
+        images = []
+        for film in billboard {
+            let data = try? Data(contentsOf: URL(string: "https://image.tmdb.org/t/p/original\(film.poster_path)")!)
+            images.append(UIImage(data: data!)!)
+            print("entro despues")
         }
+        print("terminé")
+    }
+    
+    @objc private func pressedRightButton() {
+        if page == 1 {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Anterior", style: .plain, target: self, action: #selector(self.pressedLeftButton))
+        }
+        page += 1
+        loadData()
         
+//        if alphabetic {
+//            navigationController?.navigationBar.topItem?.rightBarButtonItem?.title = "Título"
+//            alphabetic = false
+//            billboard = billboard.sorted(by: {$0.genre < $1.genre})
+//            table.reloadData()
+//        } else {
+//            navigationController?.navigationBar.topItem?.rightBarButtonItem?.title = "Género"
+//            alphabetic = true
+//            billboard = billboard.sorted(by: {$0.title < $1.title})
+//            table.reloadData()
+//        }
+    }
+    
+    @objc private func pressedLeftButton() {
+        if page == 2 {
+            navigationItem.leftBarButtonItem = nil
+        }
+        page -= 1
+        loadData()
+    }
+    
+    private func loadGenres() {
+        
+        let genreUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=0aa458f7c8179e3b827ce1a10e9e6482&language=es-ES"
+        var genreRequest = URLRequest(url: URL(string: genreUrl)!)
+        genreRequest.httpMethod = "GET"
+        genreRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        
+        let genreTask = session.dataTask(with: genreRequest, completionHandler: { data, response, error -> Void in
+            do {
+                let decoder = JSONDecoder()
+                let json = try decoder.decode(ResponseGenres.self, from: data!)
+                self.genres = json.genres
+            } catch {
+                print("error2")
+            }
+        }).resume()
+    }
+    
+    private func loadData() {
+        
+        let filmsUrl = "https://api.themoviedb.org/3/discover/movie?api_key=0aa458f7c8179e3b827ce1a10e9e6482&language=es-ES&sort_by=popularity.desc&page=\(page)"
+        var filmRequest = URLRequest(url: URL(string: filmsUrl)!)
+        filmRequest.httpMethod = "GET"
+        filmRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        
+        let filmTask = session.dataTask(with: filmRequest, completionHandler: { (data, response, error) in
+            do {
+                let decoder = JSONDecoder()
+                let json = try decoder.decode(ResponseFilms.self, from: data!)
+                self.billboard = json.results!
+                self.loadImages()
+            } catch {
+                print("error1")
+            }
+        }).resume()
     }
     
 }
+
+
+
+//https://api.themoviedb.org/3/authentication/token/new?api_key=0aa458f7c8179e3b827ce1a10e9e6482
+//
 
 //
 //,

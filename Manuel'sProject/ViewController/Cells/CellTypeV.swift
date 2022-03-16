@@ -15,7 +15,8 @@ class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     let cellTypeIId = "collectionCellTypeI"
     var relatedFilms = [Film]()
     var billboard = [Film]()
-    var film = Film()
+    var genres = [Genre]()
+    var film = Film(genre_ids: [1], id: 1,  overview: "", poster_path: "", release_date: "", title: "")
     var controller: DetailsViewController?
     var director: Bool = false
     
@@ -34,15 +35,15 @@ class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //no deberia
-        if director {
-            label.text = "Más de \(film.director)"
-        } else {
-            label.text = "Más de \(film.mainActor)"
-        }
+//        if director {
+//            label.text = "Más de \(film.director)"
+//        } else {
+//            label.text = "Más de \(film.mainActor)"
+//        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTypeIId, for: indexPath) as! CollectionCellTypeI
         
         cell.filmTitle.text = relatedFilms[indexPath.item].title
-        cell.filmImage.image = UIImage(named: relatedFilms[indexPath.item].image)
+//        cell.filmImage.image = UIImage(named: relatedFilms[indexPath.item].image)
         return cell
     }
     
@@ -52,7 +53,7 @@ class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("entro")
-        let instance = DetailsViewController(film: relatedFilms[indexPath.item], billboard: billboard)
+        let instance = DetailsViewController(film: relatedFilms[indexPath.item], billboard: billboard, genres: genres)
         controller!.pushView(view: instance)
     }
     

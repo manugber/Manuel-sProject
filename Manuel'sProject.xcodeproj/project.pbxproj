@@ -33,6 +33,11 @@
 		6785A62C27DB5F9100908577 /* CellTypeV.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6785A62A27DB5F9100908577 /* CellTypeV.xib */; };
 		6785A63027DB60F000908577 /* CollectionCellTypeI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6785A62E27DB60F000908577 /* CollectionCellTypeI.swift */; };
 		6785A63127DB60F000908577 /* CollectionCellTypeI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6785A62F27DB60F000908577 /* CollectionCellTypeI.xib */; };
+		6785A63827DF760F00908577 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6785A63727DF760F00908577 /* Response.swift */; };
+		6785A63A27DF76E800908577 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6785A63927DF76E800908577 /* Genre.swift */; };
+		6785A63C27E08F3700908577 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6785A63B27E08F3700908577 /* Credits.swift */; };
+		6785A63E27E0904900908577 /* Crew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6785A63D27E0904900908577 /* Crew.swift */; };
+		6785A64027E0912700908577 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6785A63F27E0912700908577 /* Cast.swift */; };
 		67D357D827D91002008641BE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D357D627D91002008641BE /* MainViewController.swift */; };
 		67D357D927D91002008641BE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67D357D727D91002008641BE /* MainViewController.xib */; };
 /* End PBXBuildFile section */
@@ -85,6 +90,11 @@
 		6785A62A27DB5F9100908577 /* CellTypeV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellTypeV.xib; sourceTree = "<group>"; };
 		6785A62E27DB60F000908577 /* CollectionCellTypeI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellTypeI.swift; sourceTree = "<group>"; };
 		6785A62F27DB60F000908577 /* CollectionCellTypeI.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionCellTypeI.xib; sourceTree = "<group>"; };
+		6785A63727DF760F00908577 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		6785A63927DF76E800908577 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		6785A63B27E08F3700908577 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
+		6785A63D27E0904900908577 /* Crew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crew.swift; sourceTree = "<group>"; };
+		6785A63F27E0912700908577 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 		67D357D627D91002008641BE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		67D357D727D91002008641BE /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +203,11 @@
 			isa = PBXGroup;
 			children = (
 				6757E74727D7556500579359 /* Film.swift */,
+				6785A63727DF760F00908577 /* Response.swift */,
+				6785A63927DF76E800908577 /* Genre.swift */,
+				6785A63B27E08F3700908577 /* Credits.swift */,
+				6785A63D27E0904900908577 /* Crew.swift */,
+				6785A63F27E0912700908577 /* Cast.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -394,8 +409,13 @@
 				6757E75527D75E2500579359 /* CellTypeII.swift in Sources */,
 				6757E74D27D755B500579359 /* CellTypeI.swift in Sources */,
 				6757E71827D7527000579359 /* AppDelegate.swift in Sources */,
+				6785A63C27E08F3700908577 /* Credits.swift in Sources */,
+				6785A63827DF760F00908577 /* Response.swift in Sources */,
+				6785A63E27E0904900908577 /* Crew.swift in Sources */,
 				6785A62B27DB5F9100908577 /* CellTypeV.swift in Sources */,
+				6785A64027E0912700908577 /* Cast.swift in Sources */,
 				6785A63027DB60F000908577 /* CollectionCellTypeI.swift in Sources */,
+				6785A63A27DF76E800908577 /* Genre.swift in Sources */,
 				6757E74827D7556500579359 /* Film.swift in Sources */,
 				6785A62727DAA05200908577 /* CellTypeIV.swift in Sources */,
 				6757E76127D76D9700579359 /* CellTypeIII.swift in Sources */,
