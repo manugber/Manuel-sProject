@@ -11,6 +11,7 @@ class CellTypeIV: UITableViewCell {
 
     @IBOutlet weak var indicatorLabel: UILabel!
     @IBOutlet weak var personLabel: UILabel!
+    @IBOutlet weak var personImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

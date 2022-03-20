@@ -18,12 +18,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        // Creamos el controlador inicial y lo asociamos al atributo 'rootViewController' de la ventana.
         
-        let controller = MainViewController(nibName: "MainViewController", bundle: nil)
+        let controller = BillboardViewController(nibName: "BillboardViewController", bundle: nil)
+        let controller2 = FavouritesViewController(nibName: "FavouritesViewController", bundle: nil)
+        
+        controller.tabBarItem.title = "Cartelera"
+        controller2.tabBarItem.title = "Favoritos"
+        controller.tabBarItem.image = UIImage(systemName: "film")
+        controller2.tabBarItem.image = UIImage(systemName: "heart.fill")
+        
         let navigationController = UINavigationController(rootViewController: controller)
-        window.rootViewController = navigationController
-        // Asociamos la ventana al SceneDelegate, la declaramos como ventana principal y hacemos visible.
+        let navigationController2 = UINavigationController(rootViewController: controller2)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [
+            navigationController,
+            navigationController2
+        ]
+        
+        window.rootViewController = tabBarController
         self.window = window
         self.window?.makeKeyAndVisible()
     }

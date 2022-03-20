@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BillboardViewController" customModule="Manuel_sProject" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="ZgU-a3-N7o" id="fZt-Yl-ViX"/>
+                <outlet property="searchBar" destination="CE1-vG-7Lz" id="2Ob-HF-px5"/>
+                <outlet property="table" destination="2UB-aq-qNO" id="fTa-nd-EYQ"/>
+                <outlet property="view" destination="oxZ-G8-pWQ" id="1sZ-jk-W28"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="oxZ-G8-pWQ">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2UB-aq-qNO">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Buscar un elemento" id="CE1-vG-7Lz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </searchBar>
+                </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ZgU-a3-N7o">
+                    <rect key="frame" x="157" y="403" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="Tyx-SG-PBT"/>
+                        <constraint firstAttribute="width" constant="100" id="cnB-5K-J5d"/>
+                    </constraints>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="mhQ-un-Pgl"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="mhQ-un-Pgl" firstAttribute="bottom" secondItem="2UB-aq-qNO" secondAttribute="bottom" id="77O-E3-B6w"/>
+                <constraint firstItem="ZgU-a3-N7o" firstAttribute="centerX" secondItem="mhQ-un-Pgl" secondAttribute="centerX" id="85u-ZV-ZJw"/>
+                <constraint firstItem="2UB-aq-qNO" firstAttribute="top" secondItem="mhQ-un-Pgl" secondAttribute="top" id="DI3-1O-9sI"/>
+                <constraint firstItem="2UB-aq-qNO" firstAttribute="leading" secondItem="mhQ-un-Pgl" secondAttribute="leading" id="Fdp-Uk-KgD"/>
+                <constraint firstItem="ZgU-a3-N7o" firstAttribute="centerY" secondItem="mhQ-un-Pgl" secondAttribute="centerY" id="VKW-3m-Kzn"/>
+                <constraint firstItem="2UB-aq-qNO" firstAttribute="trailing" secondItem="mhQ-un-Pgl" secondAttribute="trailing" id="ocn-qd-v9m"/>
+            </constraints>
+            <point key="canvasLocation" x="-1313.0434782608697" y="104.46428571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -8,31 +8,22 @@
 import Foundation
 import UIKit
 
-struct Film: Codable, Equatable {
+struct Film: Codable, Equatable, Hashable {
 //    var adult: Bool
 //    var backdrop_path: String
     var genre_ids: [Int]
-    var id: Int
+    let id: Int
 //    var original_language: String
 //    var original_title: String
-    var overview: String
-//    var popularity: Double
-    var poster_path: String
-    var release_date: String
-    var title: String
+    let overview: String
+    var popularity: Double?
+    var poster_path: String?
+    var release_date: String?
+    let title: String
+//    var isFavourite: Bool?
 //    var video: Bool
 //    var vote_average: Double
 //    var vote_count: Int
+    var mainGenre: String?
     
 }
-
-
-//var id: Int
-//var title: String
-//var genre: [Int]
-//   var director: String = ""
-//    var mainActor: String = ""
-//var overview: String
-//var poster_path: String
-//var release_date: String
-//    var isFavourite: Bool = false

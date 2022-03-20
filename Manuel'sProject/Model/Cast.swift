@@ -15,7 +15,7 @@ struct Cast: Codable {
     var name: String
 //    var original_name: String
 //    var popularity: Double
-    var profile_path: String
+    var profile_path: String?
 //    var cast_id: Int
 //    var character: String
 //    var credit_id: String

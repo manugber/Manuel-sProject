@@ -14,14 +14,21 @@ class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     
     let cellTypeIId = "collectionCellTypeI"
     var relatedFilms = [Film]()
+    var sharedInstance = DataController.instance
     var billboard = [Film]()
-    var genres = [Genre]()
-    var film = Film(genre_ids: [1], id: 1,  overview: "", poster_path: "", release_date: "", title: "")
+    var mainActor = Cast(id: 0, name: "", profile_path: nil)
+    var director = Crew(id: 0, name: "", profile_path: nil, job: "Director")
+    var film = Film(genre_ids: [1], id: 1, overview: "", popularity: 1.0, poster_path: "", release_date: "", title: "")
     var controller: DetailsViewController?
-    var director: Bool = false
+    var isDirector: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        loadImages { image in
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
         collectionView.dataSource = self
         collectionView.delegate = self
         let nibCellTypeI = UINib(nibName: "CollectionCellTypeI", bundle: nil)
@@ -34,16 +41,15 @@ class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //no deberia
-//        if director {
-//            label.text = "Más de \(film.director)"
-//        } else {
-//            label.text = "Más de \(film.mainActor)"
-//        }
+        if isDirector {
+            label.text = "Más de \(director.name)"
+        } else {
+            label.text = "Más de \(mainActor.name)"
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTypeIId, for: indexPath) as! CollectionCellTypeI
         
         cell.filmTitle.text = relatedFilms[indexPath.item].title
-//        cell.filmImage.image = UIImage(named: relatedFilms[indexPath.item].image)
+        cell.filmImage.image = sharedInstance.images[film.id]
         return cell
     }
     
@@ -52,8 +58,7 @@ class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("entro")
-        let instance = DetailsViewController(film: relatedFilms[indexPath.item], billboard: billboard, genres: genres)
+        let instance = DetailsViewController(film: relatedFilms[indexPath.item], billboard: billboard)
         controller!.pushView(view: instance)
     }
     
@@ -77,4 +82,16 @@ class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
         self.controller = controller
     }
     
+    func loadImages(completionHandler: @escaping ([UIImage]) -> Void) {
+        for film in relatedFilms {
+            print("entro")
+            if let path = film.poster_path {
+                let data = try? Data(contentsOf: URL(string: "https://image.tmdb.org/t/p/w400\(path)")!)
+                self.sharedInstance.images[film.id] = UIImage(data: data!)!
+            } else {
+                self.sharedInstance.images[film.id] = UIImage(systemName: "film")!
+            }
+            
+        }
+    }
 }
