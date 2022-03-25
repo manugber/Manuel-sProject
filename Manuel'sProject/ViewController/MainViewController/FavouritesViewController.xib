@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouritesViewController" customModule="Manuel_sProject" customModuleProvider="target">
             <connections>
-                <outlet property="activityIndicator" destination="JDB-X2-Tb5" id="Dse-w3-5zh"/>
                 <outlet property="table" destination="2tS-MM-das" id="qqo-SN-fwY"/>
                 <outlet property="view" destination="Q2w-v1-Sd1" id="PEf-kt-0OJ"/>
             </connections>
@@ -25,13 +24,6 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="JDB-X2-Tb5">
-                    <rect key="frame" x="157" y="403" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="IPl-Pv-j1P"/>
-                        <constraint firstAttribute="height" constant="100" id="IUa-5B-qce"/>
-                    </constraints>
-                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="oQG-Zc-ZJI"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -39,10 +31,8 @@
             <constraints>
                 <constraint firstItem="2tS-MM-das" firstAttribute="trailing" secondItem="oQG-Zc-ZJI" secondAttribute="trailing" id="9kv-Ta-1p1"/>
                 <constraint firstItem="2tS-MM-das" firstAttribute="leading" secondItem="oQG-Zc-ZJI" secondAttribute="leading" id="DkL-Cm-0B6"/>
-                <constraint firstItem="JDB-X2-Tb5" firstAttribute="centerX" secondItem="oQG-Zc-ZJI" secondAttribute="centerX" id="FdZ-cQ-sTu"/>
                 <constraint firstItem="2tS-MM-das" firstAttribute="top" secondItem="oQG-Zc-ZJI" secondAttribute="top" id="akC-7Z-UdK"/>
                 <constraint firstItem="oQG-Zc-ZJI" firstAttribute="bottom" secondItem="2tS-MM-das" secondAttribute="bottom" id="lni-Wu-xku"/>
-                <constraint firstItem="JDB-X2-Tb5" firstAttribute="centerY" secondItem="oQG-Zc-ZJI" secondAttribute="centerY" id="o1N-To-gsN"/>
             </constraints>
             <point key="canvasLocation" x="-1313.0434782608697" y="104.46428571428571"/>
         </view>

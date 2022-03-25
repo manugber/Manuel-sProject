@@ -17,6 +17,7 @@ class FavouritesViewController: MainViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         sharedInstance.onlyFavs = true
+        sharedInstance.searchActive = false
         navigationController?.navigationBar.topItem?.leftBarButtonItem?.title = sharedInstance.leftBarButtonTitle
         if sharedInstance.popularityOrder {
             sharedInstance.favourites = sharedInstance.favourites.sorted(by: {$0.popularity! > $1.popularity!})
@@ -24,7 +25,6 @@ class FavouritesViewController: MainViewController {
             sharedInstance.favourites = sharedInstance.favourites.sorted(by: {$0.mainGenre! < $1.mainGenre!})
         }
         table.reloadData()
-        self.activityIndicator.stopAnimating()
     }
     
     private func setNavigationBar() {

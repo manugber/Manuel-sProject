@@ -11,7 +11,6 @@ import Foundation
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITabBarControllerDelegate {
     
     @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var page = 1
     let refreshControl = UIRefreshControl()
@@ -22,8 +21,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
         setDelegatesAndDataSources()
         setNavigationBar()
         let nibCellTypeI = UINib(nibName: "CellTypeI", bundle: nil)
@@ -90,7 +87,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.filmTitle.text = item.title
         cell.filmGenre.text = item.mainGenre
-        cell.filmImage.image = sharedInstance.images[item.id]
+        
+        if let path = item.poster_path {
+            let url = URL(string: "https://image.tmdb.org/t/p/w400\(path)")!
+            
+            getNetworkData(url: url) { data in
+                UIImage(data: data)
+            } callback: { resultImage in
+                if case .success(let image) = resultImage {
+                    DispatchQueue.main.async {
+                        cell.filmImage.image = image
+                    }
+                }
+                if case .failure(let error) = resultImage {
+                    print(error.description)
+                    DispatchQueue.main.async {
+                        cell.filmImage.image = UIImage(systemName: "film")!
+                    }
+                }
+            }
+
+        }
 
         let image = checkFavourite(film: item) ? "heart.fill" : "heart"
         cell.favouriteButton.setImage(UIImage(systemName: image), for: .normal)
@@ -102,14 +119,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if sharedInstance.onlyFavs {
-            let instance = DetailsViewController(film: sharedInstance.favourites[calculateIndex(indexPath: indexPath)], billboard: billboard)
+            let instance = FilmDetailsViewController(film: sharedInstance.favourites[calculateIndex(indexPath: indexPath)])
             navigationController?.pushViewController(instance, animated: true)
         } else {
             if sharedInstance.searchActive {
-                let instance = DetailsViewController(film: filtered[calculateIndex(indexPath: indexPath)], billboard: billboard)
+                let instance = FilmDetailsViewController(film: filtered[calculateIndex(indexPath: indexPath)])
                 navigationController?.pushViewController(instance, animated: true)
             } else {
-                let instance = DetailsViewController(film: billboard[calculateIndex(indexPath: indexPath)], billboard: billboard)
+                let instance = FilmDetailsViewController(film: billboard[calculateIndex(indexPath: indexPath)])
                 navigationController?.pushViewController(instance, animated: true)
             }
         }
@@ -212,6 +229,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         table.reloadData()
         refreshControl.endRefreshing()
     }
+    
 }
 
 // TODO -

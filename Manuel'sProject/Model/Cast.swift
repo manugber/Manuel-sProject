@@ -10,14 +10,25 @@ import Foundation
 struct Cast: Codable {
 //    var adult: Bool
 //    var gender: Int
-    var id: Int
+//    var id: Int
 //    var known_for_department: String
-    var name: String
+//    var name: String
 //    var original_name: String
 //    var popularity: Double
-    var profile_path: String?
+//    var profile_path: String?
 //    var cast_id: Int
 //    var character: String
 //    var credit_id: String
 //    var order: Int
+    
+    let id: Int
+    let name: String
+    let profilePath: String?
+    let job: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case profilePath = "profile_path"
+        case job
+    }
 }

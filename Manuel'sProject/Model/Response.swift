@@ -19,3 +19,7 @@ struct ResponseRelatedFilms: Codable {
 struct ResponseGenres: Codable {
     var genres: [Genre]
 }
+
+struct ResponseTrailer: Codable {
+    var results: [Trailer]
+}

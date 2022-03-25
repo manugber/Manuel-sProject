@@ -13,7 +13,6 @@ class DataController {
     var favourites = [Film]()
     var genres = [Genre]()
     var filmsForGenre = [Int]()
-    var images = [Int: UIImage]()
     var leftBarButtonTitle = "Género"
     var onlyFavs = false
     var searchActive = false
