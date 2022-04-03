@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PersonDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class PersonDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var table: UITableView!
     
@@ -20,7 +20,9 @@ class PersonDetailsViewController: UIViewController, UITableViewDelegate, UITabl
     
     var person: Cast?
     var personDetails: PersonDetails?
-    var relatedFilms = [Film]()
+    var relatedFilms = Films()
+    var blurEffectView:UIVisualEffectView!
+    var activityIndicator:UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +33,30 @@ class PersonDetailsViewController: UIViewController, UITableViewDelegate, UITabl
             let nibCell = UINib(nibName: caseType.rawValue, bundle: nil)
             table.register(nibCell, forCellReuseIdentifier: caseType.rawValue)
         })
-        loadRelatedFilms()
-        loadPersonDetails()
+        Task(priority: .high) {
+            personDetails = await modelLogic.getPersonDetails(id: person!.id)
+            relatedFilms = await modelLogic.getRelatedFilms(id: person!.id)
+            table.reloadData()
+            await MainActor.run {
+                UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn) {
+                    self.blurEffectView.layer.opacity = 0.0
+                    self.activityIndicator.layer.opacity = 0.0
+                } completion: { _ in
+                    self.blurEffectView.removeFromSuperview()
+                    self.activityIndicator.stopAnimating()
+                }
+            }
+        }
+        blurEffectView = UIVisualEffectView()
+        activityIndicator = UIActivityIndicatorView(style: .large)
+
+        blur(controller: tabBarController, blurEffectView: blurEffectView, activityIndicator: activityIndicator)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if relatedFilms.isEmpty {
+            return 6
+        }
         return 7
     }
     
@@ -73,30 +94,16 @@ class PersonDetailsViewController: UIViewController, UITableViewDelegate, UITabl
             return cellType
         case 6:
             let cellType = cell as! CellTypeV
-            cellType.linkController(controller: self)
             cellType.person = person
-            cellType.relatedFilms = relatedFilms
+            cellType.films = relatedFilms
+            cellType.linkController(controller: self)
             return cellType
         default:
             let cellType = cell as! CellTypeIII
             if let path = person?.profilePath {
-                let url = URL(string: "https://image.tmdb.org/t/p/w400\(path)")!
-                
-                getNetworkData(url: url) { data in
-                    UIImage(data: data)
-                } callback: { resultImage in
-                    if case .success(let image) = resultImage {
-                        DispatchQueue.main.async {
-                            cellType.cellImage.image = image
-                        }
-                    }
-                    if case .failure(let error) = resultImage {
-                        print(error.description)
-                        DispatchQueue.main.async {
-                            cellType.cellImage.image = UIImage(systemName: "person")!
-                        }
-                    }
-                }
+                Task { cellType.cellImage .image = await getFilmImage(path: path) }
+            } else {
+                Task { cellType.cellImage.image = UIImage(systemName: "film") }
             }
             return cellType
         }
@@ -133,40 +140,4 @@ class PersonDetailsViewController: UIViewController, UITableViewDelegate, UITabl
             return CellType.titleSubtitleCellID.rawValue
         }
     }
-
-    private func loadPersonDetails() {
-        let url = URL(string: "https://api.themoviedb.org/3/person/\(person?.id ?? 0 )?api_key=0aa458f7c8179e3b827ce1a10e9e6482&language=es-ES")!
-        getNetworkThrowingData(url: url) { data in
-            try JSONDecoder().decode(PersonDetails.self, from: data)
-        } callback: { resultJSON in
-            if case .success(let json) = resultJSON {
-                self.personDetails = json
-                DispatchQueue.main.async {
-                    self.table.reloadData()
-                }
-            }
-            if case .failure(let error) = resultJSON {
-                print(error.description)
-            }
-        }
-    }
-    
-    private func loadRelatedFilms() {
-        let url = URL(string: "https://api.themoviedb.org/3/person/\(person?.id ?? 0)/movie_credits?api_key=0aa458f7c8179e3b827ce1a10e9e6482&language=es-ES")!
-        
-        getNetworkThrowingData(url: url) { data in
-            try JSONDecoder().decode(ResponseRelatedFilms.self, from: data)
-        } callback: { resultJSON in
-            if case .success(let json) = resultJSON {
-                self.relatedFilms = json.cast
-                DispatchQueue.main.async {
-                    self.table.reloadData()
-                }
-            }
-            if case .failure(let error) = resultJSON {
-                print(error.description)
-            }
-        }
-    }
-
 }

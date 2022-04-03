@@ -7,24 +7,18 @@
 
 import UIKit
 
-class FavouritesViewController: MainViewController {
+final class FavouritesViewController: MainViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        table.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        sharedInstance.onlyFavs = true
-        sharedInstance.searchActive = false
-        navigationController?.navigationBar.topItem?.leftBarButtonItem?.title = sharedInstance.leftBarButtonTitle
-        if sharedInstance.popularityOrder {
-            sharedInstance.favourites = sharedInstance.favourites.sorted(by: {$0.popularity! > $1.popularity!})
-        } else {
-            sharedInstance.favourites = sharedInstance.favourites.sorted(by: {$0.mainGenre! < $1.mainGenre!})
-        }
-        table.reloadData()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        modelLogic.onlyFavs = true
+        navigationController?.navigationBar.topItem?.leftBarButtonItem?.title = modelLogic.leftBarButtonTitle.rawValue
+        dataSource.apply(modelLogic.snapshot)
     }
     
     private func setNavigationBar() {

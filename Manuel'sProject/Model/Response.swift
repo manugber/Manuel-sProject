@@ -9,11 +9,11 @@ import Foundation
 
 struct ResponseFilms: Codable {
     var page: Int
-    var results: [Film]
+    var results: Films
 }
 
 struct ResponseRelatedFilms: Codable {
-    var cast: [Film]
+    var cast: Films
 }
 
 struct ResponseGenres: Codable {

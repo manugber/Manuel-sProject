@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CellTypeI: UITableViewCell {
+final class CellTypeI: UITableViewCell {
 
     @IBOutlet weak var filmImage: UIImageView!
     @IBOutlet weak var filmTitle: UILabel!
@@ -15,15 +15,11 @@ class CellTypeI: UITableViewCell {
     @IBOutlet weak var favouriteButton: UIButton!
     var link: MainViewController?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func prepareForReuse() {
+        filmTitle.text = nil
+        filmGenre.text = nil
+        favouriteButton.imageView?.image = nil
+        filmImage.image = nil
     }
     
     @IBAction func pressedButton() {

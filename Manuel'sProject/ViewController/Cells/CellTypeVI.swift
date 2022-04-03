@@ -7,28 +7,12 @@
 
 import UIKit
 
-class CellTypeVI: UITableViewCell {
+final class CellTypeVI: UITableViewCell {
     
     @IBOutlet weak var trailerButton: UIButton!
     var controller: FilmDetailsViewController?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     @IBAction func pressedButton(_ sender: UIButton) {
         controller?.loadTrailer()
     }
-    
-    func linkController(controller: FilmDetailsViewController) {
-        self.controller = controller
-    }
-    
 }

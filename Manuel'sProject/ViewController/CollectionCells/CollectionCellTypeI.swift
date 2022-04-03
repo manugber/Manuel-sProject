@@ -7,13 +7,14 @@
 
 import UIKit
 
-class CollectionCellTypeI: UICollectionViewCell {
+final class CollectionCellTypeI: UICollectionViewCell {
 
     @IBOutlet weak var filmTitle: UILabel!
     @IBOutlet weak var filmImage: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    override func prepareForReuse() {
+        filmTitle.text = nil
+        filmImage.image = nil
     }
 
 }

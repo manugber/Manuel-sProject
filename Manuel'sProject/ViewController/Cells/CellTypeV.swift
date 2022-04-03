@@ -7,17 +7,16 @@
 
 import UIKit
 
-class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+final class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var label: UILabel!
     
     let cellTypeIId = "collectionCellTypeI"
-    var relatedFilms = [Film]()
-    var sharedInstance = DataController.instance
+    var films = Films()
     var film: Film?
-    var person: Cast?
     var filmDetailsController: FilmDetailsViewController?
+    var person: Cast?
     var personDetailsController: PersonDetailsViewController?
     
     override func awakeFromNib() {
@@ -28,50 +27,25 @@ class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
         collectionView.register(nibCellTypeI, forCellWithReuseIdentifier: cellTypeIId)
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let secureFilm = film {
-            label.text = "Más películas como \(secureFilm.title)"
-        }
-        if let securePerson = person {
-            label.text = "Más películas de \(securePerson.name)"
-        }
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTypeIId, for: indexPath) as! CollectionCellTypeI
         
-        cell.filmTitle.text = relatedFilms[indexPath.item].title
-        if let path = relatedFilms[indexPath.item].poster_path {
-            let url = URL(string: "https://image.tmdb.org/t/p/w400\(path)")!
-            
-            getNetworkData(url: url) { data in
-                UIImage(data: data)
-            } callback: { resultImage in
-                if case .success(let image) = resultImage {
-                    DispatchQueue.main.async {
-                        cell.filmImage.image = image
-                    }
-                }
-                if case .failure(let error) = resultImage {
-                    print(error.description)
-                    DispatchQueue.main.async {
-                        cell.filmImage.image = UIImage(systemName: "film")!
-                    }
-                }
-            }
+        cell.filmTitle.text = films[indexPath.item].title
+        if let path = films[indexPath.item].posterPath {
+            Task { cell.filmImage.image = await getFilmImage(path: path) }
+        } else {
+            Task { cell.filmImage.image = UIImage(systemName: "film") }
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        relatedFilms.count
+        films.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let instance = FilmDetailsViewController(film: relatedFilms[indexPath.item])
+        let instance = FilmDetailsViewController(nibName: "FilmDetailsViewController", bundle: nil)
+        instance.film = films[indexPath.item]
         if let controller = filmDetailsController {
             controller.pushView(view: instance)
         }
@@ -82,10 +56,16 @@ class CellTypeV: UITableViewCell, UICollectionViewDelegate, UICollectionViewData
     
     func linkController(controller: FilmDetailsViewController) {
         self.filmDetailsController = controller
+        if let secureFilm = film {
+            label.text = "Más películas como \(secureFilm.title)"
+        }
     }
     
     func linkController(controller: PersonDetailsViewController) {
         self.personDetailsController = controller
+        if let securePerson = person {
+            label.text = "Más películas de \(securePerson.name)"
+        }
     }
     
 }

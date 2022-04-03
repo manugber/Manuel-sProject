@@ -7,21 +7,10 @@
 
 import UIKit
 
-class CellTypeIV: UITableViewCell {
+final class CellTypeIV: UITableViewCell {
 
     @IBOutlet weak var indicatorLabel: UILabel!
     @IBOutlet weak var personLabel: UILabel!
     @IBOutlet weak var personImage: UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
 }

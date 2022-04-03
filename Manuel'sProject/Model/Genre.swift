@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Genre: Codable {
+struct Genre: Codable, Hashable {
     var id: Int
     var name: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
