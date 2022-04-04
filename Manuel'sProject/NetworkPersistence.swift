@@ -28,13 +28,7 @@ func networkGetFilms(page: Int) async throws -> Films {
         let json = try JSONDecoder().decode(ResponseFilms.self, from: data)
         result += json.results
     }
-    return result.map({ film in
-        var newFilm = film
-        if newFilm.genreIDS.isEmpty {
-            newFilm.genreIDS.append(0)
-        }
-        return newFilm
-    })
+    return result
 }
 
 func networkGetCredits(id: Int) async throws -> Credits {
@@ -46,19 +40,11 @@ func networkGetCredits(id: Int) async throws -> Credits {
 }
 
 func networkGetRecomendedFilms(id: Int) async throws -> Films {
-    var result = Films()
     let (data, response) = try await URLSession.shared.data(for: .request(url: URL(string: "https://api.themoviedb.org/3/movie/\(id)" + .getRecomendedFilms)!))
     guard (response as? HTTPURLResponse)?.statusCode == 200 else {
         throw URLError(.badServerResponse)
     }
-    result = try JSONDecoder().decode(ResponseFilms.self, from: data).results
-    return result.map({ film in
-        var newFilm = film
-        if newFilm.genreIDS.isEmpty {
-            newFilm.genreIDS.append(0)
-        }
-        return newFilm
-    })
+    return try JSONDecoder().decode(ResponseFilms.self, from: data).results
 }
 
 func networkGetPersonDetails(id: Int) async throws -> PersonDetails {
@@ -70,19 +56,11 @@ func networkGetPersonDetails(id: Int) async throws -> PersonDetails {
 }
 
 func networkGetRelatedFilms(id: Int) async throws -> Films {
-    var result = Films()
     let (data, response) = try await URLSession.shared.data(for: .request(url: URL(string: "https://api.themoviedb.org/3/person/\(id)" + .getRelatedFilms)!))
     guard (response as? HTTPURLResponse)?.statusCode == 200 else {
         throw URLError(.badServerResponse)
     }
-    result = try JSONDecoder().decode(ResponseRelatedFilms.self, from: data).cast
-    return result.map({ film in
-        var newFilm = film
-        if newFilm.genreIDS.isEmpty {
-            newFilm.genreIDS.append(0)
-        }
-        return newFilm
-    })
+    return try JSONDecoder().decode(ResponseRelatedFilms.self, from: data).cast
 }
 
 func networkGetTrailer(id: Int) async throws -> [Trailer] {
@@ -98,13 +76,7 @@ func networkGetSearch(query: String) async throws -> Films {
     guard (response as? HTTPURLResponse)?.statusCode == 200 else {
         throw URLError(.badServerResponse)
     }
-    return try JSONDecoder().decode(ResponseFilms.self, from: data).results.map({ film in
-        var newFilm = film
-        if newFilm.genreIDS.isEmpty {
-            newFilm.genreIDS.append(0)
-        }
-        return newFilm
-    })
+    return try JSONDecoder().decode(ResponseFilms.self, from: data).results
 }
 
 func getFilmImage(path: String) async -> UIImage? {
@@ -112,7 +84,7 @@ func getFilmImage(path: String) async -> UIImage? {
         let (data, _) = try await URLSession.shared.data(from: .imageBaseURL.appendingPathComponent(path))
         return UIImage(data: data)?.resizeImage(width: 400)
     } catch {
-        print("Error bajando la imagen")
+        print("Error descargando la imagen")
         return nil
     }
 }

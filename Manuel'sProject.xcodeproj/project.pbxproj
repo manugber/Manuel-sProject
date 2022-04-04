@@ -236,8 +236,8 @@
 		67D357CC27D8DAE0008641BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6757E74727D7556500579359 /* Film.swift */,
 				6785A63727DF760F00908577 /* Response.swift */,
+				6757E74727D7556500579359 /* Film.swift */,
 				6785A63927DF76E800908577 /* Genre.swift */,
 				6785A63B27E08F3700908577 /* Credits.swift */,
 				6785A63F27E0912700908577 /* Cast.swift */,

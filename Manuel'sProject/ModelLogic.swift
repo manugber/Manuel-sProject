@@ -71,13 +71,7 @@ final class ModelLogic {
     func loadFilms() async {
         do {
             billboard = try await networkGetFilms(page: page)
-            billboard = films.map({ film in
-                var newFilm = film
-                newFilm.mainGenre = getMainGenre(genreId: film.genreIDS[0])
-                newFilm.genres = getGenres(ids: newFilm.genreIDS)
-                newFilm.isFavourite = isFavourite(film: newFilm)
-                return newFilm
-            })
+            billboard = completeFilms(filmsToComplete: billboard)
         } catch {
             print("error en la descarga \(error)")
         }
@@ -112,13 +106,7 @@ final class ModelLogic {
         var recomendedFilms = Films()
         do {
             recomendedFilms = try await networkGetRecomendedFilms(id: id)
-            recomendedFilms = recomendedFilms.map({ film in
-                var newFilm = film
-                newFilm.mainGenre = getMainGenre(genreId: film.genreIDS[0])
-                newFilm.genres = getGenres(ids: newFilm.genreIDS)
-                newFilm.isFavourite = isFavourite(film: newFilm)
-                return newFilm
-            })
+            recomendedFilms = completeFilms(filmsToComplete: recomendedFilms)
         } catch {
             print("error en la descarga \(error)")
         }
@@ -138,13 +126,7 @@ final class ModelLogic {
         var relatedFilms = Films()
         do {
             relatedFilms = try await networkGetRelatedFilms(id: id)
-            relatedFilms = relatedFilms.map({ film in
-                var newFilm = film
-                newFilm.mainGenre = getMainGenre(genreId: film.genreIDS[0])
-                newFilm.genres = getGenres(ids: newFilm.genreIDS)
-                newFilm.isFavourite = isFavourite(film: newFilm)
-                return newFilm
-            })
+            relatedFilms = completeFilms(filmsToComplete: relatedFilms)
         } catch {
             print("error en la descarga \(error)")
         }
@@ -169,13 +151,7 @@ final class ModelLogic {
     func loadSearch() async{
         do {
             search = try await networkGetSearch(query: query)
-            search = films.map({ film in
-                var newFilm = film
-                newFilm.mainGenre = getMainGenre(genreId: film.genreIDS[0])
-                newFilm.genres = getGenres(ids: newFilm.genreIDS)
-                newFilm.isFavourite = isFavourite(film: newFilm)
-                return newFilm
-            })
+            search = completeFilms(filmsToComplete: search)
         } catch {
             print("error en la descarga \(error)")
         }
@@ -250,5 +226,19 @@ final class ModelLogic {
             result += "\(genreFiltered[0].name), "
         }
         return String(result.dropLast(2))
+    }
+    
+    private func completeFilms(filmsToComplete: Films) -> Films {
+        let resultFilms: Films = filmsToComplete.map({ film in
+            var newFilm = film
+            if newFilm.genreIDS.isEmpty {
+                newFilm.genreIDS.append(0)
+            }
+            newFilm.mainGenre = getMainGenre(genreId: newFilm.genreIDS[0])
+            newFilm.genres = getGenres(ids: newFilm.genreIDS)
+            newFilm.isFavourite = isFavourite(film: newFilm)
+            return newFilm
+        })
+        return resultFilms
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class MainViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UITabBarControllerDelegate {
+class MainViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var table: UITableView!
     
@@ -37,9 +37,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UISearchBarDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDelegates()
         setNavigationBar()
         table.dataSource = dataSource
+        table.delegate = self
         let nibCellTypeI = UINib(nibName: "CellTypeI", bundle: nil)
         table.register(nibCellTypeI, forCellReuseIdentifier: cellTypeIId)
         refreshControl.attributedTitle = NSAttributedString(string: "Desliza para refrescar")
@@ -64,11 +64,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UISearchBarDele
         guard let film = dataSource.itemIdentifier(for: table.indexPath(for: cell)!) else { return }
         modelLogic.filmFavourited(film: film)
         dataSource.apply(modelLogic.snapshot, animatingDifferences: true)
-    }
-    
-    private func setDelegates() {
-        table.delegate = self
-        tabBarController!.delegate = self
     }
     
     private func setNavigationBar() {
